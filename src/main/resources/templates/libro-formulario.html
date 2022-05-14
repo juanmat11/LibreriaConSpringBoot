@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Crear Libro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Crear Libro</h2>
+        <p th:text="${error}" th:if="${error != null}"> 
+
+        </p>
+        <form th:action="@{/libro/save}" method="POST">
+            <label><strong>Título del libro</strong></label><br>
+
+            <input hidden type="text" name="id" th:value="${libro.id}" />
+
+            <input type="text" name="titulo" th:value='${libro.titulo}'>
+            <br>
+            <label><strong>Año </strong></label><br>
+            <input type="text" name="anio" th:value='${libro.anio}'>
+            <br>
+            <label><strong>ISBN del libro</strong></label><br>
+            <input type="text" name="isbn" th:value='${libro.isbn}'>
+            <br>
+            <label><strong>Autor </strong></label><br>
+            <input type="text" name="nombreAutor" th:value='${libro.autor.nombre}'>
+            <br>
+            <label><strong>Editorial</strong></label><br>
+            <input type="text" name="nombreEditorial" th:value='${libro.editorial.nombre}'>
+            <br>
+            <input type="submit"/>
+        </form>
+        <a th:href="@{/libro/list}">Ir a la lista de libros</a>
+
+    </body>
+</html>
